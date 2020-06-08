@@ -1,38 +1,117 @@
 package com.ing.zoo;
 
-import java.util.Scanner;
+import com.ing.zoo.animals.*;
+
+import java.util.*;
 
 public class Zoo {
-    public static void main(String[] args)
-    {
-        String[] commands = new String[4];
-        commands[0] = "hello";
-        commands[1] = "give leaves";
-        commands[2] = "give meat";
-        commands[3] = "perform trick";
+    public static void main(String[] args) {
 
-        Lion henk = new Lion();
-        henk.name = "henk";
-        Hippo elsa = new Hippo();
-        elsa.name = "elsa";
-        Pig dora = new Pig();
-        dora.name = "dora";
-        Tiger wally = new Tiger();
-        wally.name = "wally";
-        Zebra marty = new Zebra();
-        marty.name = "marty";
+        List<String> commands = Arrays.asList(
+                "hello",
+                "give leaves",
+                "give meat",
+                "perform trick"
+        );
 
+        List<Animal> animals = Arrays.asList(
+                new Lion("Alex"),
+                new Hippo("Gloria"),
+                new Pig("Rick"),
+                new Tiger("Wally"),
+                new Zebra("Marty"),
+                new Giraffe("Melman"),
+                new Monkey("Julian")
+        );
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Voer uw command in: ");
+        String input;
+        String[] splittedInput;
 
-        String input = scanner.nextLine();
-        if(input.equals(commands[0] + " henk"))
-        {
-            henk.sayHello();
-        }
-        else
-        {
-            System.out.println("Unknown command: " + input);
+        boolean loop = true;
+        while (loop) {
+
+            System.out.println("\nCommands:");
+            commands.forEach(System.out::println);
+            System.out.print("stop\nVoer uw command in: ");
+
+            input = scanner.nextLine();
+            input = input.toLowerCase();
+            splittedInput = input.split(" ", 0);
+            System.out.println();
+            String popo = splittedInput[splittedInput.length - 1];
+
+            if (input.contains(commands.get(0))) {
+                if (splittedInput.length == 1) {
+                    animals.forEach(Animal::sayHello);
+                } else {
+                    for (Animal animal : animals) {
+                        if (animal.getName().toLowerCase().equals(splittedInput[1])) {
+                            animal.sayHello();
+                        }
+                    }
+                }
+            } else if (input.contains(commands.get(1))) {
+                if (splittedInput.length == 2) {
+                    for (Animal animal : animals) {
+                        if (animal.getEatsLeaves()) {
+                            animal.eatLeaves();
+                        }
+                    }
+                } else {
+                    for (Animal animal : animals) {
+                        if (animal.getName().toLowerCase().equals(splittedInput[2])) {
+                            if (animal.getEatsLeaves()) {
+                                animal.eatLeaves();
+                            } else {
+                                System.out.println("This animal doesn't eat leaves");
+                            }
+                        }
+                    }
+                }
+            } else if (input.contains(commands.get(2))) {
+                if (splittedInput.length == 2) {
+                    for (Animal animal : animals) {
+                        if (animal.getEatsMeat()) {
+                            animal.eatMeat();
+                        }
+                    }
+                } else {
+                    for (Animal animal : animals) {
+                        if (animal.getName().toLowerCase().equals(splittedInput[2])) {
+                            if (animal.getEatsMeat()) {
+                                animal.eatMeat();
+                            } else {
+                                System.out.println("This animal doesn't eat meat");
+                            }
+                        }
+                    }
+                }
+            } else if (input.contains(commands.get(3))) {
+                if (splittedInput.length == 2) {
+                    for (Animal animal : animals) {
+                        if (animal.getDoesTricks()) {
+                            animal.performTrick();
+                        }
+                    }
+                } else {
+                    for (Animal animal : animals) {
+                        if (animal.getName().toLowerCase().equals(splittedInput[2])) {
+                            if (animal.getDoesTricks()) {
+                                animal.performTrick();
+                            } else {
+                                System.out.println("This animal doesn't perform tricks");
+                            }
+                        }
+                    }
+                }
+            }else if(input.contains("stop")){
+                loop = false;
+                System.out.println("Program ending...");
+            }
+            else {
+                System.out.println("Unknown command: " + input);
+            }
         }
     }
+
 }
