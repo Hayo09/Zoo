@@ -11,7 +11,8 @@ public class Zoo {
                 "hello",
                 "give leaves",
                 "give meat",
-                "perform trick"
+                "perform trick",
+                "stop"
         );
 
         List<Animal> animals = Arrays.asList(
@@ -32,13 +33,12 @@ public class Zoo {
 
             System.out.println("\nCommands:");
             commands.forEach(System.out::println);
-            System.out.print("stop\nVoer uw command in: ");
+            System.out.print("Voer uw command in: ");
 
             input = scanner.nextLine();
             input = input.toLowerCase();
             splittedInput = input.split(" ", 0);
             System.out.println();
-            String popo = splittedInput[splittedInput.length - 1];
 
             if (input.contains(commands.get(0))) {
                 if (splittedInput.length == 1) {
@@ -104,7 +104,7 @@ public class Zoo {
                         }
                     }
                 }
-            }else if(input.contains("stop")){
+            }else if(input.contains(commands.get(4))){
                 loop = false;
                 System.out.println("Program ending...");
             }
