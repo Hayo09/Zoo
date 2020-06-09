@@ -79,7 +79,9 @@ public class Zoo {
                     performers.forEach(Performer::performTrick);
                 } else {
                     for (Performer performer : performers) {
-                        performer.performTrick();
+                        if (performer.getName().toLowerCase().equals(splittedInput[2])) {
+                            performer.performTrick();
+                        }
                     }
                 }
             }else if(input.contains(commands.get(4))){
