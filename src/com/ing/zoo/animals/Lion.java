@@ -1,40 +1,28 @@
 package com.ing.zoo.animals;
 
-public class Lion extends Animal {
+public class Lion implements Carnivore {
 
+    private String name;
+    private String helloText;
+    private String eatText;
 
     public Lion(String name) {
-        super(name);
-        this.eatsMeat = true;
-        this.eatsLeaves = false;
-        this.doesTricks = false;
+        this.name = name;
     }
 
     public String getName() {
-        return super.getName();
-    }
-
-    public Boolean getEatsMeat() {
-        return super.getEatsMeat();
-    }
-
-    public Boolean getEatsLeaves() {
-        return super.getEatsLeaves();
-    }
-
-    public Boolean getDoesTricks() {
-        return super.getDoesTricks();
+        return this.name;
     }
 
     public void sayHello()
     {
         helloText = name + ": roooaoaaaaar";
-        super.sayHello();
+        System.out.println(helloText);
     }
 
     public void eatMeat()
     {
         eatText = name + ": nomnomnom thx mate";
-        super.eatMeat();
+        System.out.println(eatText);
     }
 }

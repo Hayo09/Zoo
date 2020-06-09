@@ -1,39 +1,28 @@
 package com.ing.zoo.animals;
 
-public class Zebra extends Animal{
+public class Zebra implements Herbivore{
+
+    private String name;
+    private String helloText;
+    private String eatText;
 
     public Zebra(String name) {
-        super(name);
-        this.eatsMeat = false;
-        this.eatsLeaves = true;
-        this.doesTricks = false;
+        this.name = name;
     }
 
     public String getName() {
-        return super.getName();
-    }
-
-    public Boolean getEatsMeat() {
-        return super.getEatsMeat();
-    }
-
-    public Boolean getEatsLeaves() {
-        return super.getEatsLeaves();
-    }
-
-    public Boolean getDoesTricks() {
-        return super.getDoesTricks();
+        return this.name;
     }
 
     public void sayHello()
     {
         helloText = name + ": zebra zebra";
-        super.sayHello();
+        System.out.println(helloText);
     }
 
     public void eatLeaves()
     {
         eatText = name + ": munch munch zank yee bra";
-        super.eatLeaves();
+        System.out.println(eatText);
     }
 }

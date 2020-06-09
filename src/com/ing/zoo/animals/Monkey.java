@@ -2,38 +2,29 @@ package com.ing.zoo.animals;
 
 import java.util.Random;
 
-public class Monkey extends Animal{
+public class Monkey implements Herbivore, Performer{
+
+    private String name;
+    private String helloText;
+    private String eatText;
+    private String trick;
+
     public Monkey(String name) {
-        super(name);
-        this.eatsMeat = false;
-        this.eatsLeaves = true;
-        this.doesTricks = true;
+        this.name = name;
     }
 
     public String getName() {
-        return super.getName();
-    }
-
-    public Boolean getEatsMeat() {
-        return super.getEatsMeat();
-    }
-
-    public Boolean getEatsLeaves() {
-        return super.getEatsLeaves();
-    }
-
-    public Boolean getDoesTricks() {
-        return super.getDoesTricks();
+        return this.name;
     }
 
     public void sayHello() {
         helloText = name + ": OOH OOH AAH AAH";
-        super.sayHello();
+        System.out.println(helloText);
     }
 
     public void eatLeaves() {
         eatText = name + ": Small munch with lice JUM";
-        super.eatLeaves();
+        System.out.println(eatText);
     }
 
     public void performTrick() {
@@ -47,6 +38,6 @@ public class Monkey extends Animal{
         {
             trick = name + ": ignores";
         }
-        super.performTrick();
+        System.out.println(trick);
     }
 }

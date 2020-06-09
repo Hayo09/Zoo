@@ -1,36 +1,26 @@
 package com.ing.zoo.animals;
 
-public class Giraffe extends Animal {
+public class Giraffe implements Herbivore {
+
+    private String name;
+    private String helloText;
+    private String eatText;
+
     public Giraffe(String name) {
-        super(name);
-        this.eatsMeat = false;
-        this.eatsLeaves = true;
-        this.doesTricks = false;
+        this.name = name;
     }
 
     public String getName() {
-        return super.getName();
-    }
-
-    public Boolean getEatsMeat() {
-        return super.getEatsMeat();
-    }
-
-    public Boolean getEatsLeaves() {
-        return super.getEatsLeaves();
-    }
-
-    public Boolean getDoesTricks() {
-        return super.getDoesTricks();
+        return this.name;
     }
 
     public void sayHello() {
         helloText = name + ": *Too high to understand*";
-        super.sayHello();
+        System.out.println(helloText);
     }
 
     public void eatLeaves() {
         eatText = name + ": Big tree = big munch";
-        super.eatLeaves();
+        System.out.println(eatText);
     }
 }

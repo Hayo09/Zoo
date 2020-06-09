@@ -14,16 +14,20 @@ public class Zoo {
                 "perform trick",
                 "stop"
         );
+        // init animals
+        Lion alex = new Lion("Alex");
+        Hippo gloria = new Hippo("Gloria");
+        Pig rick = new Pig("Rick");
+        Tiger wally = new Tiger("Wally");
+        Zebra marty = new Zebra("Marty");
+        Giraffe melman = new Giraffe("Melman");
+        Monkey julian = new Monkey("Julian");
+        // assigning animals to the right groups
+        List<Animal> animals = Arrays.asList(alex, gloria, rick, wally, marty, melman, julian);
+        List<Carnivore> carnivores = Arrays.asList(alex, rick, wally);
+        List<Herbivore> herbivores = Arrays.asList(gloria, rick, marty, melman, julian);
+        List<Performer> performers = Arrays.asList(rick, wally, julian);
 
-        List<Animal> animals = Arrays.asList(
-                new Lion("Alex"),
-                new Hippo("Gloria"),
-                new Pig("Rick"),
-                new Tiger("Wally"),
-                new Zebra("Marty"),
-                new Giraffe("Melman"),
-                new Monkey("Julian")
-        );
         Scanner scanner = new Scanner(System.in);
         String input;
         String[] splittedInput;
@@ -52,55 +56,31 @@ public class Zoo {
                 }
             } else if (input.contains(commands.get(1))) {
                 if (splittedInput.length == 2) {
-                    for (Animal animal : animals) {
-                        if (animal.getEatsLeaves()) {
-                            animal.eatLeaves();
-                        }
-                    }
+                    herbivores.forEach(Herbivore::eatLeaves);
                 } else {
-                    for (Animal animal : animals) {
-                        if (animal.getName().toLowerCase().equals(splittedInput[2])) {
-                            if (animal.getEatsLeaves()) {
-                                animal.eatLeaves();
-                            } else {
-                                System.out.println("This animal doesn't eat leaves");
-                            }
+                    for (Herbivore herbivore : herbivores) {
+                        if (herbivore.getName().toLowerCase().equals(splittedInput[2])) {
+                            herbivore.eatLeaves();
                         }
                     }
                 }
             } else if (input.contains(commands.get(2))) {
                 if (splittedInput.length == 2) {
-                    for (Animal animal : animals) {
-                        if (animal.getEatsMeat()) {
-                            animal.eatMeat();
-                        }
-                    }
+                    carnivores.forEach(Carnivore::eatMeat);
                 } else {
-                    for (Animal animal : animals) {
-                        if (animal.getName().toLowerCase().equals(splittedInput[2])) {
-                            if (animal.getEatsMeat()) {
-                                animal.eatMeat();
-                            } else {
-                                System.out.println("This animal doesn't eat meat");
-                            }
+                    for (Carnivore carnivore : carnivores) {
+                        if (carnivore.getName().toLowerCase().equals(splittedInput[2])) {
+                            carnivore.eatMeat();
                         }
                     }
                 }
             } else if (input.contains(commands.get(3))) {
                 if (splittedInput.length == 2) {
-                    for (Animal animal : animals) {
-                        if (animal.getDoesTricks()) {
-                            animal.performTrick();
-                        }
-                    }
+                    performers.forEach(Performer::performTrick);
                 } else {
-                    for (Animal animal : animals) {
-                        if (animal.getName().toLowerCase().equals(splittedInput[2])) {
-                            if (animal.getDoesTricks()) {
-                                animal.performTrick();
-                            } else {
-                                System.out.println("This animal doesn't perform tricks");
-                            }
+                    for (Performer performer : performers) {
+                        if (performer.getName().toLowerCase().equals(splittedInput[2])) {
+                            performer.performTrick();
                         }
                     }
                 }
