@@ -2,41 +2,31 @@ package com.ing.zoo.animals;
 
 import java.util.Random;
 
-public class Tiger extends Animal {
+public class Tiger implements Carnivore, Performer {
+
+    private String name;
+    private String helloText;
+    private String eatText;
+    private String trick;
 
     public Tiger(String name) {
-        super(name);
-        this.eatsMeat = true;
-        this.eatsLeaves = false;
-        this.doesTricks = true;
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public void sayHello()
     {
         helloText = name + ": rraaarww";
-        super.sayHello();
-    }
-
-    public String getName() {
-        return super.getName();
-    }
-
-    public Boolean getEatsMeat() {
-        return super.getEatsMeat();
-    }
-
-    public Boolean getEatsLeaves() {
-        return super.getEatsLeaves();
-    }
-
-    public Boolean getDoesTricks() {
-        return super.getDoesTricks();
+        System.out.println(helloText);
     }
 
     public void eatMeat()
     {
         eatText = name + ": nomnomnom oink wubalubadubdub";
-        super.eatMeat();
+        System.out.println(eatText);
     }
 
     public void performTrick()
@@ -51,6 +41,6 @@ public class Tiger extends Animal {
         {
             trick = name + ": scratches ears";
         }
-        super.performTrick();
+        System.out.println(trick);
     }
 }
